@@ -1,2 +1,2 @@
 # UNI
-purely laboratory programs 
+purely laboratory programs for academic year 2022-2025
