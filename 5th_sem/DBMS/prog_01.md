@@ -113,6 +113,11 @@ VALUES
 (5, 5, 30);
 ```
 ## RETRIEVING VALUES
-- Particulars of borrowers who have borrowed more than 1 book from a specific date range:  `SELECT card_no FROM BOOK_LENDING WHERE date_out BETWEEN '2023-01-01' AND '2023-07-01' GROUP BY card_no HAVING COUNT(*)>1;`
-- Delete a book in BOOK table: `DELETE FROM BOOK WHERE book_id=2`
-- Partition the BOOK table based in year of publication: `CREATE VIEW VW_PUBLICATION AS SELECT pub_year FROM BOOK;`
+- Particulars of borrowers who have borrowed more than 1 book from a specific date range: 
+ `SELECT card_no FROM BOOK_LENDING WHERE date_out BETWEEN '2023-01-01' AND '2023-07-01' GROUP BY card_no HAVING COUNT(*)>1;`
+
+- Delete a book in BOOK table:
+ `DELETE FROM BOOK WHERE book_id=2`
+
+- Partition the BOOK table based in year of publication:
+ `CREATE VIEW VW_PUBLICATION AS SELECT pub_year FROM BOOK;`
