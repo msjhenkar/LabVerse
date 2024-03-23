@@ -35,6 +35,9 @@
                     }
                 }
             });
+// splice is a method that modifies an array by removing elements.
+// The first argument (index) specifies the position at which to start removing.
+// The second argument (1) specifies the number of elements to remove (in this case, just 1).
         </script>
     </head>
 
@@ -55,9 +58,10 @@
 
             Enter an Item to Add:<input type="text" ng-model="newitem">
             <button ng-click="additem()">ADD</button>
-
-            Enter an Item to remove: <input type="text" ng-model="selectitem">
-            <select nng-model="selectitem" ng-option="item for product in shoppinglist"></select>
+            <br><br>
+            Select an Item to Remove:
+            <select ng-model="selectitem" ng-options="product for product in shoppinglist"></select>
+            <br><br>
             <button ng-click="removeitem()">REMOVE</button>
         </div>
        
@@ -66,3 +70,5 @@
         
     </body>
 </html>
+
+
