@@ -1,84 +1,93 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>CRUD Application</title>
-    <script type="text/Javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
-        </script>
-    <script>
-        var app = angular.module("myCRUD",[]);
-        app.controller("crudCntrl",function($scope){
-            $scope.users=[
-                {'name':'John Doe', 'email':'johndoe@gmail.com', 'editing':'false'},
-                {'name':'ABC', 'email':'abc@gmail.com', 'editing':'false'},
-                {'name':'XYZ', 'email':'xyz@gmail.com', 'editing':'false'}
-            ]
-            $scope.Cuser=function(){
-                if($scope.newName && $scope.newMail){
-                    var u ={
-                        'name':$scope.newName,
-                        'email':$scope.newMail,
-                        'editing':false
+    <head>
+        <title>CRUD APPLICATION</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>\
+        <script>
+            var app=angular.module("myapp",[]);
+            app.controller("mycntrl",function($scope){
+                $scope.userlist=[
+                {'name':'ABC','email':'abc@gmail.com','Editing':false},
+                {'name':'MNO','email':'mno@gmail.com','Editing':false},
+                {'name':'PQR','email':'pqr@gmail.com','Editing':false},
+                {'name':'XYZ','email':'xyz@gmail.com','Editing':false}
+                ]
+
+                $scope.create=function(){
+                    if($scope.newusername && $scope.newuseremail){
+                        var u={
+                            'name':$scope.newusername,
+                            'email': $scope.newuseremail,
+                            'Editing': false
+                        }
+                        $scope.userlist.push(u)
+                        $scope.newusername=''
+                        $scope.newuseremail=''
                     }
-                    $scope.users.push(u)
-                    $scope.newName=''
-                    $scope.newMail=''
+                    else{
+                        alert("provide valid user name and email") 
+                    }
                 }
-                else{
-                    alert("Please provide user name and mail")
-                }
+
+            $scope.readu = function(user){
+                user.Editing=true
             }
-            $scope.read=function(user){
-                user.editing=true
+
+            $scope.updateu = function(user){
+                user.Editing=false
             }
-            $scope.update=function(user){
-                user.editing=false
-            }
-            $scope.delete=function(user){
-                var yes=confirm("Are you sure you want to delete?")
+
+            $scope.delete = function(user){
+                var yes=confirm("are you sure you want to delete")
                 if(yes==true){
-                    var index =$scope.users.indexOf(user)
-                    $scope.users.splice(index,1)
+                    var index=$scope.userlist.indexOf(user)
+                    $scope.userlist.splice(index,1)
                 }
             }
-        });
-    </script>
-</head>
-<body ng-app="myCRUD">
-    <h1>CRUD Application</h1>
-    <div ng-controller="crudCntrl">
-        Enter the user name:<input type="text" ng-model="newName"><br>
-        Enter the user mail:<input type="text" ng-model="newMail"><br>
-        <button ng-click="Cuser()">Create</button><br>
-        <table border="1">
-            <tr>
-                <th>SLNo</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Read</th>
-                <th>Update</th>
-                <th>Delete</th>
-            </tr>
-            <tr ng-repeat="user in users">
-                <td>{{$index+1}}</td>
-                <td>
-                    <span ng-show="!user.editing">{{user.name}}</span>&nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="text" ng-show="user.editing" ng-model="user.name">
-                </td>
-                <td>
-                    <span ng-show="!user.editing">{{user.email}}</span>
-                    <input type="text" ng-show="user.editing" ng-model="user.email">
-                </td>
-                <td>
-                    <button ng-click="read(user)">Read</button>
-                </td>
-                <td>
-                    <button ng-click="update(user)">Update</button>
-                </td>
-                <td>
-                    <button ng-click="delete(user)">Delete</button>
-                </td>
-            </tr>
-        </table>
-    </div>
-</body>
+            });
+        </script>
+    </head>
+
+    <body ng-app="myapp">
+        <h2>BASIC CRUD APPLICATION</h2>
+
+        <div ng-controller="mycntrl">
+            Enter the user name: <input type="text" ng-model="newusername"><br>
+            Enter user email: <input type="text" ng-model="newuseremail">
+            <br><br>
+            <button ng-click="create()">CREATE</button>
+
+            <table border="1">
+                <tr>
+                    <th>SLNO</th>
+                    <th>NAME</th>
+                    <th>EMAIL</th>
+                    <th>READ</th>
+                    <th>UPDATE</th>
+                    <th>DELETE</th>
+                </tr>
+
+                <tr ng-repeat="i in userlist">
+                    <td> {{$index + 1}} </td>
+                    <td>
+                        <span ng-show="!i.Editing">{{i.name}}</span>&nbsp;
+                        <input type="text" ng-show="i.Editing" ng-model="i.name">
+                    </td>
+                    <td>
+                        <span ng-show="!i.Editing">{{i.email}}</span>&nbsp;
+                        <input type="text" ng-show="i.Editing" ng-model="i.email">
+                    </td>
+                    <td>
+                        <button ng-click="readu(i)">READ</button>
+                    </td>
+                    <td>
+                        <button ng-click="updateu(i)">UPDATE</button>
+                    </td>
+                    <td>
+                        <button ng-click="delete(i)">delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </body>
 </html>
