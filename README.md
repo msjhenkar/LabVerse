@@ -1,2 +1,2 @@
 # UNI
-purely laboratory programs for academic year 2022-2025
+This repository serves as a comprehensive collection of laboratory programs developed during the third year of undergraduate engineering studies
