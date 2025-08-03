@@ -8,7 +8,20 @@ This repository is a curated collection of lab programs implemented as part of m
 
 Each folder is organized based on individual lab subjects 
 
+---
+
 ## 🔍 Labs Covered
 
 ### 🗄️ Database Management Systems (DBMS) Lab
-### 💻 Software Engineering Lab
+### 🌐 Web Technologies/ Angular Lab
+### 💻 Software Testing Lab
+### 🌐 Full Stack Development Lab
+### 📊 Data Structures & Algorithms Lab
+
+---
+
+## 🎯 Objectives
+- Reinforce theoretical knowledge through practical implementation.
+- Enhance problem-solving and debugging skills.
+- Act as a revision resource for exams and interviews.
+
